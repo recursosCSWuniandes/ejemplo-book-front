@@ -5,7 +5,7 @@
 -  [Modificando bower.json](#modificando-bowerjson)
 -  [Modificando package.json](#modificando-packagejson)
 -  [Ajustando el index.html](#ajustando-el-indexhtml)
--  [Creando el primer modulo](#creando-el-primer-modulo)
+-  [Creando el primer modulo](#crear-el-primer-modulo)
 
 ## Crear proyecto
 Con NetBeans ya adecuadamente configurado proceda a crear un nuevo proyecto, para ello seleccione el tipo **HTML5/JS Application**.
@@ -174,3 +174,8 @@ Para terminar debe cambiar el tag ```<body>``` al siguiente:
 Este tag se encarga de definir la estructura HTML basica de Bootstrap, en donde se incluye el encabezado ```<navbar>``` que actua de modo responsive y que incluye el menu del aplicativo así como las opciones de loggeo que se manejan con el tag ```<login-button>```.    
 
 ## Crear el primer modulo
+Para empezar cree una carpeta en el folder *Site Root* y asignele el nombre *src*, posteriormente agregue allí un archivo *app.js* con el siguiente contenido:
+
+!!! CONTENIDO DEL ARCHIVO
+
+En este archivo se registran los modulos iniciales *authModule, bookModule y ui.router*. A continuación, usando el $stateProvider de Angular, se da reconocimiento al path /book para que cargue el modulo de libro que se va a definir, aquí mismo se ajusta el controlador y el template que usara dicho modulo para su funcionamiento. Finalmente, se define en el authServiceProvider, los ajustes de autenticación de usuario, incluyendo las urls de login, registro, logout, redirecciones y demás, posteriormente se registran los roles con los que se define el uso del menu del aplicativo según las condiciones del usuario que lo este utilizando, esta parte se da con la linea: ```auth.setRoles({'user': [{id: 'indexBook', label: 'book', icon: 'list-alt', url: '#/book'}]}) ;```
