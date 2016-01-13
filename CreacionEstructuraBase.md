@@ -30,8 +30,8 @@ Finalizando el archivo se encuentran las tareas que creamos, en este caso regist
 Nombre  | Tareas que ejecuta
 ------- | -------------
 run     | <ul><li>build</li><li>connect:dist:keepalive</li></ul>
-debug   | <ul> <li>jshint</li><li>jscs</li><li>clean:server</li><li>wiredep</li><li>includeSource</li><li>copy:styles</li><li>connect:livereload</li><li>watch</li></ul>
-build   | <ul><li>jshint</li><li>jscs</li><li>clean</li><li>wiredep:dist</li><li>includeSource</li><li>useminPrepare</li><li>ngtemplates</li><li>concat</li><li>copy</li><li>cssmin</li><li>uglify</li><li>filerev</li><li>usemin</li><li>htmlmin</li></ul>
+debug   | <ul> <li>jshint (evalua la calidad de codigo JS)</li><li>jscs (da formato a codigo JS)</li><li>clean:server (borra directorios con archivos generados)</li><li>wiredep (concatena depedencias de bower)</li><li>includeSource (incluye archivos con los parametros especificados)</li><li>copy:styles (copia archivos)</li><li>connect:livereload</li><li>watch (monitorea archivos y corre tareas en base a cambios sobre los mismos)</li></ul>
+build   | <ul><li>jshint</li><li>jscs</li><li>clean</li><li>wiredep:dist</li><li>includeSource</li><li>useminPrepare (prepara la minificación de archivos)</li><li>ngtemplates</li><li>concat</li><li>copy</li><li>cssmin (minifica codigo CSS)</li><li>uglify (minifica codigo JS)</li><li>filerev (renombra archivos para manejar el cache del navegador)</li><li>usemin (reescribe archivos basandose en cambios de filerev y useMinPrepare)</li><li>htmlmin (minfiica codigo HTML)</li></ul>
 test    | <ul> <li>jshint</li><li>jscs</li><li>clean:server</li><li>wiredep:test</li><li>includeSource</li><li>copy:coverageE2E</li><li>instrument</li><li>connect:test</li><li>protractor_coverage</li><li>makeReport</li></ul>
 default | <ul><li>test</li><li>build</li></ul>
 
