@@ -5,6 +5,7 @@
 -  [Modificando bower.json](#modificando-bowerjson)
 -  [Modificando package.json](#modificando-packagejson)
 -  [Ajustando el index.html](#ajustando-el-indexhtml)
+-  [Creando el primer modulo](#creando-el-primer-modulo)
 
 ## Crear proyecto
 Con NetBeans ya adecuadamente configurado proceda a crear un nuevo proyecto, para ello seleccione el tipo **HTML5/JS Application**.
@@ -171,3 +172,5 @@ Para terminar debe cambiar el tag ```<body>``` al siguiente:
 ```
 
 Este tag se encarga de definir la estructura HTML basica de Bootstrap, en donde se incluye el encabezado ```<navbar>``` que actua de modo responsive y que incluye el menu del aplicativo así como las opciones de loggeo que se manejan con el tag ```<login-button>```.    
+
+## Crear el primer modulo
