@@ -67,7 +67,7 @@ Posteriormente agregue el siguiente pedazo de codigo al ```<head>``` el cual se 
 
 Proceda a cargar Bootstrap, el main.css y los CSS adicionales que deba cargar bower en ejecución, mediante el siguiente codigo:
 
-```HTML
+```
 <!-- build:css(<%= meta.src %>) styles/vendor.css -->
 <!-- bower:css -->
 <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
