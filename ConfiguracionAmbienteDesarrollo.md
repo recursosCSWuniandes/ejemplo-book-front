@@ -4,6 +4,7 @@
 -  [Actualización NPM](#actualización-npm)
 -  [Ejecución de tareas](#ejecución-de-tareas)
 -  [Instalar dependencias](#instalar-dependencias)
+-  [Configuración de NetBeans](#configuración-de-netbeans)
 
 ## Instalar NodeJS
 NodeJS es un framework de desarrollo web basado en javascript que se ejecuta sobre la plataforma V8. Permite la instalación de herramientas para crear aplicaciones tanto de frontend como de backend basadas netamente en javascript.
