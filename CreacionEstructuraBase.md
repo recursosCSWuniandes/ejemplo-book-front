@@ -2,9 +2,9 @@
 
 -  [Crear proyecto](#crear-proyecto)
 -  [Modificando Gruntfile](#modificando-gruntfile)
--  [Modificando bower.json](#modificando-bower.json)
--  [Modificando package.json](#modificando-package.json)
--  [Ajustando el index.html](#ajustando-el-index.html)
+-  [Modificando bower.json](#modificando-bowerjson)
+-  [Modificando package.json](#modificando-packagejson)
+-  [Ajustando el index.html](#ajustando-el-indexhtml)
 
 ## Crear proyecto
 Con NetBeans ya adecuadamente configurado proceda a crear un nuevo proyecto, para ello seleccione el tipo **HTML5/JS Application**.
@@ -67,7 +67,7 @@ Posteriormente agregue el siguiente pedazo de codigo al ```<head>``` el cual se 
 
 Proceda a cargar Bootstrap, el main.css y los CSS adicionales que deba cargar bower en ejecución, mediante el siguiente codigo:
 
-```
+```HTML
 <!-- build:css(<%= meta.src %>) styles/vendor.css -->
 <!-- bower:css -->
 <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -81,7 +81,8 @@ Proceda a cargar Bootstrap, el main.css y los CSS adicionales que deba cargar bo
 
 
 <!-- /include -->
-<!-- endbuild -->```
+<!-- endbuild -->
+```
 
 Finalmente, agregue los archivos javascript por medio del siguiente codigo:
 
