@@ -81,8 +81,7 @@ Proceda a cargar Bootstrap, el main.css y los CSS adicionales que deba cargar bo
 
 
 <!-- /include -->
-<!-- endbuild -->
-```
+<!-- endbuild -->```
 
 Finalmente, agregue los archivos javascript por medio del siguiente codigo:
 
