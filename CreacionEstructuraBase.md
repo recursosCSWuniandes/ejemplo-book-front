@@ -67,7 +67,7 @@ Posteriormente agregue el siguiente pedazo de codigo al ```<head>``` el cual se 
 
 Proceda a cargar Bootstrap, el main.css y los CSS adicionales que deba cargar bower en ejecución, mediante el siguiente codigo:
 
-```
+```HTML
 <!-- build:css(<%= meta.src %>) styles/vendor.css -->
 <!-- bower:css -->
 <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -81,11 +81,12 @@ Proceda a cargar Bootstrap, el main.css y los CSS adicionales que deba cargar bo
 
 
 <!-- /include -->
-<!-- endbuild -->```
+<!-- endbuild -->
+```
 
 Finalmente, agregue los archivos javascript por medio del siguiente codigo:
 
-```
+```HTML
 <!-- build:js(<%= meta.src %>) scripts/vendor.js -->
 <!-- bower:js -->
 <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -108,13 +109,14 @@ Finalmente, agregue los archivos javascript por medio del siguiente codigo:
 <script src="src/modules/book/book.ctrl.js"></script>
 <script src="src/modules/book/book.svc.js"></script>
 <!-- /include -->
-<!-- endbuild -->```
+<!-- endbuild -->
+```
 
 Con lo que se hará la carga de Angular, los scripts Bootstrap (incluyendo jQuery) y los componentes adicionales de Bower, también se hará la carga de los archivos propios del proyecto que definen el modulo *book*.
 
 Para terminar debe cambiar el tag ```<body>``` al siguiente:
 
-```
+```HTML
 <body style="padding-top: 60px;">
         <div class="container-fluid">
             <div class="col-md-12">
