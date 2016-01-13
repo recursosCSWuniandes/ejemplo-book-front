@@ -17,7 +17,25 @@ Abra el archivo *Important Files/Gruntfile* y asigne el contenido que se encuent
 
 !!ENLACE DEL ARCHIVO
 
-La configuración del Gruntfile 
+Este archivo es utilizado por Grunt para realizar las tareas que en el ejecutamos (como build, run o test), por lo tanto su contenido puede resultar un poco complejo, se aconseja visitar la [documentación oficial](http://gruntjs.com/sample-gruntfile) para entender los conceptos basicos.
+
+El Gruntfile inicia con la inclusión de algunas dependencias para la ejecución de las tareas que se explicaran más adelante, esta parte se determina con los dos *require*.
+
+Posteriormente se definen algunas variables que son validas para el archivo en cuestión, en este caso se definiran dentro de la colección *appConfig*.
+
+La configuración del proyecto inicia con la linea ```grunt.initConfig``` en donde se especifican algunas acciones (como clean, copy o ngtemplates). Tenga en cuenta que cada una de las anteriores se encarga de realizar tareas especificas según su funcionalidad y el plugin a donde correspondan. La documentación de cada una esta disponible en su respectivo sitio web, sin embargo la mayoria de opciones son muy dicientes sobre lo que tratan de cumplir.
+
+Finalizando el archivo se encuentran las tareas que creamos, en este caso registramos:
+
+Nombre  | Tareas que ejecuta
+------- | -------------
+run     | <ul><li>build</li><li>connect:dist:keepalive</li></ul>
+debug   | <ul> <li>jshint</li><li>jscs</li><li>clean:server</li><li>wiredep</li><li>includeSource</li><li>copy:styles</li><li>connect:livereload</li><li>watch</li></ul>
+build   | <ul><li>jshint</li><li>jscs</li><li>clean</li><li>wiredep:dist</li><li>includeSource</li><li>useminPrepare</li><li>ngtemplates</li><li>concat</li><li>copy</li><li>cssmin</li><li>uglify</li><li>filerev</li><li>usemin</li><li>htmlmin</li></ul>
+test    | <ul> <li>jshint</li><li>jscs</li><li>clean:server</li><li>wiredep:test</li><li>includeSource</li><li>copy:coverageE2E</li><li>instrument</li><li>connect:test</li><li>protractor_coverage</li><li>makeReport</li></ul>
+default | <ul><li>test</li><li>build</li></ul>
+
+Como puede apreciar es posible dentro de una tarea registrada hacer un llamada a otra, como es el caso de default que ejecuta test (es decir todas las subtareas que allí se definen) y lo mismo para build.
 
 ## Modificando bower.json
 
