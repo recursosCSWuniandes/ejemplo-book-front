@@ -5,8 +5,6 @@
 -  [Modificando bower.json](#modificando-bower.json)
 -  [Modificando package.json](#modificando-package.json)
 -  [Ajustando el index.html](#ajustando-el-index.html)
--  [Instalar dependencias](#instalar-dependencias)
-- 
 
 ## Crear proyecto
 Con NetBeans ya adecuadamente configurado proceda a crear un nuevo proyecto, para ello seleccione el tipo **HTML5/JS Application**.
@@ -14,6 +12,12 @@ Con NetBeans ya adecuadamente configurado proceda a crear un nuevo proyecto, par
 En las opciones posteriores seleccione la ruta en donde guardara el proyecto, no seleccione ningun template y en las herramientas deje todas marcadas a excepción de gulpfile.js
 
 ## Modificando Gruntfile
+
+Abra el archivo *Important Files/Gruntfile* y asigne el contenido que se encuentra a continuación:
+
+!!ENLACE DEL ARCHIVO
+
+La configuración del Gruntfile 
 
 ## Modificando bower.json
 
@@ -50,4 +54,100 @@ Para la aplicación que esta creando se usaran dos frameworks web:
 
 **AngularJS** es un framework que facilita muchas de las tareas dinamicas que se desarrollan con Javascript, mientras que **Bootstrap** es un framework que permite la creación rapida de sitios web responsive mediante el uso de unos HTML/CSS/JS predeterminados.
 
-Para implementar **AngularJS** en el proyecto creado abra el index.html que se encuentra adentro de la carpeta *Site Root*, en primer lugar modifique la etiqueta ```<html>``` y dejela como ```<html ng-app="mainApp">``` con ello 
+Para implementar **AngularJS** y **Bootstrap** en el proyecto creado abra el index.html que se encuentra adentro de la carpeta *Site Root*, en primer lugar modifique la etiqueta ```<html>``` y dejela como ```<html ng-app="mainApp">``` para cargar Angular sobre el template.
+
+Posteriormente agregue el siguiente pedazo de codigo al ```<head>``` el cual se encarga de asignarle un titulo a la aplicación, ajustar el tamaño para que sea responsive, arreglar la compatibilidad con Internet Explorer y definir UTF-8 como charset:
+
+```HTML
+<title>BookBasico</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
+
+Proceda a cargar Bootstrap, el main.css y los CSS adicionales que deba cargar bower en ejecución, mediante el siguiente codigo:
+
+```
+<!-- build:css(<%= meta.src %>) styles/vendor.css -->
+<!-- bower:css -->
+<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:css(<%= meta.src %>) styles/main.css -->
+<!-- include: "type": "css", "files": "<%= meta.includeCssFiles %>" -->
+
+
+
+
+<!-- /include -->
+<!-- endbuild -->```
+
+Finalmente, agregue los archivos javascript por medio del siguiente codigo:
+
+```
+<!-- build:js(<%= meta.src %>) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../bower_components/ngstorage/ngStorage.js"></script>
+<script src="../bower_components/checklist-model/checklist-model.js"></script>
+<script src="../bower_components/angular-route/angular-route.js"></script>
+<script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="../bower_components/csw-ng-auth/dist/csw-ng-auth.js"></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js(<%= meta.src %>) scripts/scripts.js -->
+<!-- include: "type": "js", "files": "<%= meta.includeJsFiles %>" -->
+<script src="src/app.js"></script>
+<script src="src/modules/book/book.mod.js"></script>
+<script src="src/modules/book/book.ctrl.js"></script>
+<script src="src/modules/book/book.svc.js"></script>
+<!-- /include -->
+<!-- endbuild -->```
+
+Con lo que se hará la carga de Angular, los scripts Bootstrap (incluyendo jQuery) y los componentes adicionales de Bower, también se hará la carga de los archivos propios del proyecto que definen el modulo *book*.
+
+Para terminar debe cambiar el tag ```<body>``` al siguiente:
+
+```
+<body style="padding-top: 60px;">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-bar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href>BookBasico</a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="main-bar">
+                            <ul class="nav navbar-nav">
+                                <li><a ui-sref="book">Book</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                <login-button></login-button>
+                                </li>
+                            </ul>
+                        </div> <!-- /.navbar-collapse -->
+                    </div> <!-- /.container-fluid -->
+                </nav>
+            </div>
+            <div ui-view></div>
+        </div>
+    </body>
+```
+
+Este tag se encarga de definir la estructura HTML basica de Bootstrap, en donde se incluye el encabezado ```<navbar>``` que actua de modo responsive y que incluye el menu del aplicativo así como las opciones de loggeo que se manejan con el tag ```<login-button>```.    
