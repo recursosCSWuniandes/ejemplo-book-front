@@ -59,6 +59,8 @@ Adicionalmente, se necesita instalar las dependencias de bower, las cuales se en
 bower install
 ```
 
+En caso de tener problemas relacionados con no encontrar Git dentro del Path (para Windows) proceda a descargar git de la siguiente dirección: https://git-for-windows.github.io/, al momento de instalar verifique que la siguiente opción ha sido seleccionada: "[x] Run Git from the Windows Command Prompt"
+
 ## Configuración de NetBeans
 
 El desarrollo del proyecto se hará usando el IDE [NetBeans](https://netbeans.org/) en su versión 8.1, descargue del sitio web la versión Java EE e instalela en su maquina.
