@@ -34,8 +34,7 @@ Nombre  | Tareas que ejecuta
 run     | <ul><li>build</li><li>connect:dist:keepalive</li></ul>
 debug   | <ul> <li>jshint (evalua la calidad de codigo JS)</li><li>jscs (da formato a codigo JS)</li><li>clean:server (borra directorios con archivos generados)</li><li>wiredep (concatena depedencias de bower)</li><li>includeSource (incluye archivos con los parametros especificados)</li><li>copy:styles (copia archivos)</li><li>connect:livereload</li><li>watch (monitorea archivos y corre tareas en base a cambios sobre los mismos)</li></ul>
 build   | <ul><li>jshint</li><li>jscs</li><li>clean</li><li>wiredep:dist</li><li>includeSource</li><li>useminPrepare (prepara la minificación de archivos)</li><li>ngtemplates</li><li>concat</li><li>copy</li><li>cssmin (minifica codigo CSS)</li><li>uglify (minifica codigo JS)</li><li>filerev (renombra archivos para manejar el cache del navegador)</li><li>usemin (reescribe archivos basandose en cambios de filerev y useMinPrepare)</li><li>htmlmin (minfiica codigo HTML)</li></ul>
-test    | <ul> <li>jshint</li><li>jscs</li><li>clean:server</li><li>wiredep:test</li><li>includeSource</li><li>copy:coverageE2E</li><li>instrument</li><li>connect:test</li><li>protractor_coverage</li><li>makeReport</li></ul>
-default | <ul><li>test</li><li>build</li></ul>
+default | <ul><li>build</li></ul>
 
 Como puede apreciar es posible dentro de una tarea registrada hacer un llamada a otra, como es el caso de default que ejecuta test (es decir todas las subtareas que allí se definen) y lo mismo para build.
 
@@ -192,6 +191,7 @@ Luego de ello hay que creer un directorio adicional dentro de *src* llamado *mod
 Con estos archivos se definira el modulo de libros, el contenido de cada archivo puede verificarse en el siguiente enlace:
 
 ### book.ctrl.js
+Define el controlador del modulo, el cual se registra como "bookCtrl" y hace llamados a "bookService" para completar sus funciones. Principalmente se compone de los mismos metodos que tiene el servicio (puesto que debe llamarlos según sea el caso) con la adición de metodos que permiten mostrar mensajes de alerta e información acerca de las operaciones que debe realizar el controlador.
 
 ### book.mod.js
 El modulo se define aquí, especificando su nombre: "bookModule", los modulos que requiere: "bootstrap" y la definición de la constante "bookContext" que esta definida como una URL.
