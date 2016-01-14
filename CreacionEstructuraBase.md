@@ -194,11 +194,19 @@ Con estos archivos se definira el modulo de libros, el contenido de cada archivo
 ### book.ctrl.js
 
 ### book.mod.js
+El modulo se define aquí, especificando su nombre: "bookModule", los modulos que requiere: "bootstrap" y la definición de la constante "bookContext" que esta definida como una URL.
 
 ### book.svc.js
+En este archivo se define el servicio "bookService" en el cual se crean los siguientes metodos:
+
+Nombre          | Función                                                                       | Tipo de petición
+--------------- | ----------------------------------------------------------------------------- | -------------------
+fetchRecords    | Retorna todos los libros                                                      | GET
+fetchRecord     | Retorna el libro que se pasa como parametro                                   | GET
+saveRecord      | Cuando el parametro "saveRecord" esta definido entonces se procede a actualizar la información con un PUT, de lo contrario se crea un nuevo book haciendo una petición POST                                      | PUT/POST
+deleteRecord    | Hace una petición DELETE para borrar el libro que se pasa como parametro      | DELETE
 
 ### book.tpl.html
-
 Los archivos .tpl.html son los templates que maquetan la página que se despliega en el navegador que visualiza el aplicativo, los que se han dado de guia funcionan bajo las directrices de AngularJS y Bootstrap, por lo que la documentación de ambas plataformas resulta ser de gran utilidad para entender con claridad las lineas de los mismos
 
 En el caso de book.tpl.html se empieza con el siguiente div: ```<div id="book-header">``` el cual muestra el menu del apartado de libros, por lo tanto allí se muestran los botones que permiten crear un libro, refrescar los libros mostrados, guardar los cambios realizados y cancelar la operación actual, estos botones son mostrados u ocultados según la operación que se este realizando (haciendo uso de ng-show y ng-hide de Angular).
