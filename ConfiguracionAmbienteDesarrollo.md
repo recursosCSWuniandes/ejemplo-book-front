@@ -48,9 +48,7 @@ npm es el manejador de paquetes de NodeJS. Una vez instalado, es posible instala
 npm install -g bower grunt-cli
 ```
 
-Después de esto, es necesario instalar las dependencias del proyecto, que permitirán realizar las tareas de construcción y ejecución de pruebas del mismo.
-
-Al ejecutar el siguiente comando, NodeJS busca las dependencias del proyecto en `package.json` y realiza la instalación de las mismas.
+Después de esto, es necesario instalar las dependencias del proyecto, que permitirán realizar las tareas de construcción y ejecución de pruebas del mismo. Para ello, en la consola, utilice el comando ```cd``` para ir al directorio del proyecto, luego ejecute el siguiente comando, el cual indica a NodeJS que debe buscar las dependencias del proyecto en `package.json` y realiza la instalación de las mismas.
 ```sh
 npm install
 ```
@@ -67,28 +65,52 @@ El desarrollo del proyecto se hará usando el IDE [NetBeans](https://netbeans.or
 
 Una vez haya instalado el programa dirigase a los ajustes del mismo (Netbeans -> Preferences en Mac, Tools -> Options para Windows) y seleccione la pestaña **HTML/JS**. Ahora proceda a configurar la ubicación de Bower, Grunt y NodeJS/NPM.
 
-Para Bower la ruta suele ser:
+Para **Bower** la ruta - en Mac - suele ser:
 
 ```
 /Users/USUARIO/.nvm/versions/node/v0.12.7/bin/bower
 ```
 
-Mientras que para Grunt:
+Para Windows:
+
+```
+C:\Users\USUARIO\AppData\Roaming\nvm\v0.12.7\bower.cmd
+```
+
+Mientras que para **Grunt** se tiene, en Mac:
 
 ```
 /usr/local/bin/grunt
 ```
 
-En el caso de Node:
+En Windows:
+
+```
+C:\Users\USUARIO\AppData\Roaming\nvm\v0.12.7\grunt.cmd
+```
+
+En el caso de **Node**:
 
 ```
 /usr/local/bin/node
 ```
 
-Finalmente NPM:
+En Windows:
+
+```
+C:\Program Files\nodejs\node.exe
+```
+
+Finalmente **NPM**:
 
 ```
 /Users/USUARIO/.nvm/versions/node/v0.12.7/bin/npm
+```
+
+En Windows:
+
+```
+C:\Program Files\nodejs\npm.cmd
 ```
 
 Tenga en cuenta que los directorios pueden variar entre un sistema y otro.
