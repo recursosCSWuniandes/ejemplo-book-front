@@ -18,7 +18,7 @@ En las opciones posteriores seleccione la ruta en donde guardara el proyecto, no
 
 Abra el archivo *Important Files/Gruntfile* y asigne el contenido que se encuentra a continuación:
 
-https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/Gruntfile.js
+https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/m/Gruntfile.js
 
 Este archivo es utilizado por Grunt para realizar las tareas que en el ejecutamos (como build, run o test), por lo tanto su contenido puede resultar un poco complejo, se aconseja visitar la [documentación oficial](http://gruntjs.com/sample-gruntfile) para entender los conceptos basicos.
 
@@ -43,7 +43,7 @@ Como puede apreciar es posible dentro de una tarea registrada hacer un llamada a
 
 Abra el archivo *Important Files/bower.json* y asigne el contenido del ejemplo:
 
-https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/bower.json
+https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/f94db9477718eb2b52c589f750613a592d30c7de/bower.json
 
 Bower es un gestor de paquetes que permite la carga de depencias dentro de proyectos web. En el archivo enlazado podrá preciar que se asignan los siguientes parametros:
 
@@ -56,7 +56,7 @@ Bower es un gestor de paquetes que permite la carga de depencias dentro de proye
 ## Modificando package.json
 Abra el archivo *Important Files/package.json* y asigne el contenido del ejemplo:
 
-https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/package.json
+https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/f94db9477718eb2b52c589f750613a592d30c7de/package.json
 
 En este archivo las primeras 4 lineas son de configuración: name, version, description y main (archivo principal de carga).
 
