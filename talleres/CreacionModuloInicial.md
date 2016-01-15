@@ -14,7 +14,7 @@ book.ctrl.js  | Controlador del modulo
 book.mod.js   | Definición del modulo
 book.svc.js   | Servicios del modulo
 
-A continuación se explica con mayor detalle el funcionamiento de cada uno.
+Estos archivos deben ir en la ruta "src/modules/book" y a continuación se explica con mayor detalle el funcionamiento de cada uno.
 
 ## book.ctrl.js
 Define el controlador del modulo, el cual se registra como "bookCtrl" y hace llamados a "bookService" para completar sus funciones. Principalmente se compone de los mismos metodos que tiene el servicio (puesto que debe llamarlos según sea el caso) con la adición de metodos que permiten mostrar mensajes de alerta e información acerca de las operaciones que debe realizar el controlador.
