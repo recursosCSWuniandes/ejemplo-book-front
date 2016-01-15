@@ -139,6 +139,8 @@ Para terminar debe cambiar el tag ```<body>``` al siguiente:
                         <div class="collapse navbar-collapse" id="main-bar">
                             <ul class="nav navbar-nav">
                                 <li><a ui-sref="book">Book</a></li>
+                                <li><a ui-sref="editorial">Editorial</a></li>
+                                <li><a ui-sref="author">Author</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
@@ -161,12 +163,12 @@ Para empezar cree una carpeta en el folder *app* y asignele el nombre *src*, pos
 
 !!! CONTENIDO DEL ARCHIVO
 
-En este archivo se registran los modulos iniciales *authModule y ui.router*. A continuación, usando el $stateProvider de Angular, se da reconocimiento al path /book para que cargue el modulo de libro que se va a definir. Finalmente, se define en el authServiceProvider, los ajustes de autenticación de usuario, incluyendo las urls de login, registro, logout, redirecciones y demás, posteriormente se registran los roles con los que se define el uso del menu del aplicativo según las condiciones del usuario que lo este utilizando, esta parte se da con la linea: ```auth.setRoles({'user': [{id: 'indexBook', label: 'book', icon: 'list-alt', url: '#/book'}]}) ;```
+En este archivo se registran los modulos iniciales, para este caso unicamente será *ui.router*. A continuación, usando el $stateProvider de Angular, se da reconocimiento a los path iniciales: /book, /editorial y /author para que carguen los modulos que se van a definir.
 
 ## Crear el primer template
-Luego de ello hay que crear un directorio adicional dentro de *src* llamado *modules* en donde se almacenaran los modulos, como paso inicial también debe crearse el directorio *book* y sobre el se creara el template inicial, el cual deberá crearse como un archivo HTML llamado ```book.tpl.html```, estos archivos .tpl.html son los templates que maquetan la página que se despliega en el navegador que visualiza el aplicativo, los que se han dado de guia funcionan con los framework de AngularJS y Bootstrap, por lo que la documentación de ambas plataformas resulta ser de gran utilidad para entender con claridad las lineas de los mismos
+Luego de ello hay que crear un directorio adicional dentro de *src* llamado *modules* en donde se almacenaran los modulos, como paso inicial también debe crearse los directorios *book*, *editorial* y *author*. En cada directorio se crean los archivos ```book.tpl.html, editorial.tpl.html y author.tpl.html```, estos archivos .tpl.html son los templates que maquetan la página que se despliega en el navegador que visualiza el aplicativo, los que se han dado de guia funcionan con los framework de AngularJS y Bootstrap, por lo que la documentación de ambas plataformas resulta ser de gran utilidad para entender con claridad las lineas de los mismos
 
-El archivo inicial cuenta con contenido estatico, es decir que unicamente se encarga de mostrar información predeterminada cuando se hace la carga del mismo (con 3 libros), sin embargo este archivo se modificará con la intención de hacer el despliegue de los datos que se carguen del backend.
+El archivo inicial cuenta con contenido estatico, es decir que unicamente se encarga de mostrar información predeterminada cuando se hace la carga del mismo (con 3 libros, autores y editoriales), sin embargo este archivo se modificará con la intención de hacer el despliegue de los datos que se carguen del backend.
 
 Tenga en cuenta la documentación de bootstrap para comprender el contenido del archivo, en especifico se hace uso de una serie de ```<div>``` anidados en donde ```col-(md/sm)-#``` representan una columna (# va de 1 a 12) y estas columnas tienen la información de los 3 libros mencionados.
 
