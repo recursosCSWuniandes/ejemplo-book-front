@@ -6,18 +6,19 @@
 -  [Modificando package.json](#modificando-packagejson)
 -  [Ajustando el index.html](#ajustando-el-indexhtml)
 -  [Crear app.js](#crear-appjs)
--  [Creando el primer modulo](#crear-el-primer-modulo)
+-  [Crear el primer template](#crear-el-primer-template)
+-  [Ejecucion](#ejecución)
 
 ## Crear proyecto
 Con NetBeans ya adecuadamente configurado proceda a crear un nuevo proyecto, para ello seleccione el tipo **HTML5/JS Application**.
 
-En las opciones posteriores seleccione la ruta en donde guardara el proyecto, no seleccione ningun template y en las herramientas deje todas marcadas a excepción de gulpfile.js
+En las opciones posteriores seleccione la ruta en donde guardara el proyecto, no seleccione ningun template y en las herramientas deje todas marcadas a excepción de gulpfile.js. Una vez creado el proyecto de clic derecho sobre el mismo y cree un nuevo folder llamado **app**, luego de clic derecho sobre el proyecto y seleccione la opción properties, ahora en **Sources** ubique la selección de la carpeta **Source Folder** y seleccione la carpeta que acabo de crear.
 
 ## Modificando Gruntfile
 
 Abra el archivo *Important Files/Gruntfile* y asigne el contenido que se encuentra a continuación:
 
-!!ENLACE DEL ARCHIVO
+https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/Gruntfile.js
 
 Este archivo es utilizado por Grunt para realizar las tareas que en el ejecutamos (como build, run o test), por lo tanto su contenido puede resultar un poco complejo, se aconseja visitar la [documentación oficial](http://gruntjs.com/sample-gruntfile) para entender los conceptos basicos.
 
@@ -42,7 +43,7 @@ Como puede apreciar es posible dentro de una tarea registrada hacer un llamada a
 
 Abra el archivo *Important Files/bower.json* y asigne el contenido del ejemplo:
 
-!!ENLACE DEL ARCHIVO
+https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/bower.json
 
 Bower es un gestor de paquetes que permite la carga de depencias dentro de proyectos web. En el archivo enlazado podrá preciar que se asignan los siguientes parametros:
 
@@ -55,7 +56,7 @@ Bower es un gestor de paquetes que permite la carga de depencias dentro de proye
 ## Modificando package.json
 Abra el archivo *Important Files/package.json* y asigne el contenido del ejemplo:
 
-!!ENLACE DEL ARCHIVO
+https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/package.json
 
 En este archivo las primeras 4 lineas son de configuración: name, version, description y main (archivo principal de carga).
 
@@ -84,54 +85,36 @@ Posteriormente agregue el siguiente pedazo de codigo al ```<head>``` el cual se 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
 
-Proceda a cargar Bootstrap, el main.css y los CSS adicionales que deba cargar bower en ejecución, mediante el siguiente codigo:
+Proceda a cargar los archivos CSS del proyecto, estos archivos serán cargados por Bower por lo cual unicamente hay que dejar una etiqueta para que Bower los agregue automaticamente al hacer build, de la siguiente manera:
 
 ```HTML
 <!-- build:css(<%= meta.src %>) styles/vendor.css -->
 <!-- bower:css -->
-<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:css(<%= meta.src %>) styles/main.css -->
 <!-- include: "type": "css", "files": "<%= meta.includeCssFiles %>" -->
-
-
-
-
 <!-- /include -->
 <!-- endbuild -->
 ```
 
-Finalmente, agregue los archivos javascript por medio del siguiente codigo:
+Finalmente, agregue los archivos javascript del mismo modo:
 
 ```HTML
 <!-- build:js(<%= meta.src %>) scripts/vendor.js -->
 <!-- bower:js -->
-<script src="../bower_components/jquery/dist/jquery.js"></script>
-<script src="../bower_components/angular/angular.js"></script>
-<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="../bower_components/ngstorage/ngStorage.js"></script>
-<script src="../bower_components/checklist-model/checklist-model.js"></script>
-<script src="../bower_components/angular-route/angular-route.js"></script>
-<script src="../bower_components/angular-cookies/angular-cookies.js"></script>
-<script src="../bower_components/csw-ng-auth/dist/csw-ng-auth.js"></script>
-<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js(<%= meta.src %>) scripts/scripts.js -->
 <!-- include: "type": "js", "files": "<%= meta.includeJsFiles %>" -->
 <script src="src/app.js"></script>
-<script src="src/modules/book/book.mod.js"></script>
-<script src="src/modules/book/book.ctrl.js"></script>
-<script src="src/modules/book/book.svc.js"></script>
 <!-- /include -->
 <!-- endbuild -->
 ```
 
-Con lo que se hará la carga de Angular, los scripts Bootstrap (incluyendo jQuery) y los componentes adicionales de Bower, también se hará la carga de los archivos propios del proyecto que definen el modulo *book*.
+Con lo anterior Bower hará la carga de Angular, los scripts Bootstrap (incluyendo jQuery) y los componentes adicionales de Bower, también se hará la carga de los archivos propios del proyecto, por ahora unicamente será el archivo ```src/app.js```
 
 Para terminar debe cambiar el tag ```<body>``` al siguiente:
 
@@ -156,6 +139,8 @@ Para terminar debe cambiar el tag ```<body>``` al siguiente:
                         <div class="collapse navbar-collapse" id="main-bar">
                             <ul class="nav navbar-nav">
                                 <li><a ui-sref="book">Book</a></li>
+                                <li><a ui-sref="editorial">Editorial</a></li>
+                                <li><a ui-sref="author">Author</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
@@ -171,46 +156,31 @@ Para terminar debe cambiar el tag ```<body>``` al siguiente:
     </body>
 ```
 
-Este tag se encarga de definir la estructura HTML basica de Bootstrap, en donde se incluye el encabezado ```<navbar>``` que actua de modo responsive y que incluye el menu del aplicativo así como las opciones de loggeo que se manejan con el tag ```<login-button>```.    
+Esta porción de codigo se encarga de definir la estructura HTML basica de Bootstrap. Se incluye incluye el encabezado, maqueteado con ```<navbar>```, que actua de modo responsive. También esta presente el menu del aplicativo (```<ul class="nav navbar-nav">```), así como las opciones de loggeo que se manejan con el tag ```<login-button>```.  
 
 ## Crear App.js
-Para empezar cree una carpeta en el folder *Site Root* y asignele el nombre *src*, posteriormente agregue allí un archivo *app.js* con el siguiente contenido:
+Para empezar cree una carpeta en el folder *app* y asignele el nombre *src*, posteriormente agregue allí un archivo *app.js* con el siguiente contenido:
 
 !!! CONTENIDO DEL ARCHIVO
 
-En este archivo se registran los modulos iniciales *authModule, bookModule y ui.router*. A continuación, usando el $stateProvider de Angular, se da reconocimiento al path /book para que cargue el modulo de libro que se va a definir, aquí mismo se ajusta el controlador y el template que usara dicho modulo para su funcionamiento. Finalmente, se define en el authServiceProvider, los ajustes de autenticación de usuario, incluyendo las urls de login, registro, logout, redirecciones y demás, posteriormente se registran los roles con los que se define el uso del menu del aplicativo según las condiciones del usuario que lo este utilizando, esta parte se da con la linea: ```auth.setRoles({'user': [{id: 'indexBook', label: 'book', icon: 'list-alt', url: '#/book'}]}) ;```
+En este archivo se registran los modulos iniciales, para este caso unicamente será *ui.router*. A continuación, usando el $stateProvider de Angular, se da reconocimiento a los path iniciales: /book, /editorial y /author para que carguen los modulos que se van a definir.
 
-## Crear el primer modulo
-Luego de ello hay que creer un directorio adicional dentro de *src* llamado *modules*, este directorio se llamará *book* y sobre el se crearan los siguientes archivos:
+## Crear el primer template
+Luego de ello hay que crear un directorio adicional dentro de *src* llamado *modules* en donde se almacenaran los modulos, adentro de dicho folder también deben crearse los directorios *book*, *editorial* y *author*. En cada directorio se crean los archivos ```book.tpl.html, editorial.tpl.html y author.tpl.html``` respectivamente. Estos archivos .tpl.html son los templates que estructuran la página que se despliega en el navegador, los que se han dado de guia funcionan con los framework de AngularJS y Bootstrap, por lo que la documentación de ambas plataformas resulta ser de gran utilidad para entender con claridad las lineas de los mismos
 
-* book.ctrl.js
-* book.mod.js
-* book.svc.js
-* book.tpl.html
+El archivo inicial cuenta con contenido estatico, es decir que unicamente se encarga de mostrar información predeterminada cuando se hace la carga del mismo (con 3 libros, autores y editoriales), sin embargo este archivo se modificará con la intención de hacer el despliegue de los datos que se carguen del backend.
 
-Con estos archivos se definira el modulo de libros, el contenido de cada archivo puede verificarse en el siguiente enlace:
+Tenga en cuenta la documentación de bootstrap para comprender el contenido del archivo, en especifico se hace uso de una serie de ```<div>``` anidados en donde ```col-(md/sm)-#``` representan una columna (# va de 1 a 12) y estas columnas tienen la información de los 3 libros mencionados.
 
-### book.ctrl.js
-Define el controlador del modulo, el cual se registra como "bookCtrl" y hace llamados a "bookService" para completar sus funciones. Principalmente se compone de los mismos metodos que tiene el servicio (puesto que debe llamarlos según sea el caso) con la adición de metodos que permiten mostrar mensajes de alerta e información acerca de las operaciones que debe realizar el controlador.
+## Ejecución
+Para ver el proyecto desplegado (con la información de los libros estaticos), proceda a dar clic derecho sobre el proyecto y seleccione las siguientes opciones:
 
-### book.mod.js
-El modulo se define aquí, especificando su nombre: "bookModule", los modulos que requiere: "bootstrap" y la definición de la constante "bookContext" que esta definida como una URL.
+```npm install```
 
-### book.svc.js
-En este archivo se define el servicio "bookService" en el cual se crean los siguientes metodos:
+```bower install```
 
-Nombre          | Función                                                                       | Tipo de petición
---------------- | ----------------------------------------------------------------------------- | -------------------
-fetchRecords    | Retorna todos los libros                                                      | GET
-fetchRecord     | Retorna el libro que se pasa como parametro                                   | GET
-saveRecord      | Cuando el parametro "saveRecord" esta definido entonces se procede a actualizar la información con un PUT, de lo contrario se crea un nuevo book haciendo una petición POST                                      | PUT/POST
-deleteRecord    | Hace una petición DELETE para borrar el libro que se pasa como parametro      | DELETE
+```Grunt Tasks -> Advanced... -> grunt run```
 
-### book.tpl.html
-Los archivos .tpl.html son los templates que maquetan la página que se despliega en el navegador que visualiza el aplicativo, los que se han dado de guia funcionan bajo las directrices de AngularJS y Bootstrap, por lo que la documentación de ambas plataformas resulta ser de gran utilidad para entender con claridad las lineas de los mismos
+Posteriormente se deberá ver la aplicación funcionando sobre la siguiente url:
 
-En el caso de book.tpl.html se empieza con el siguiente div: ```<div id="book-header">``` el cual muestra el menu del apartado de libros, por lo tanto allí se muestran los botones que permiten crear un libro, refrescar los libros mostrados, guardar los cambios realizados y cancelar la operación actual, estos botones son mostrados u ocultados según la operación que se este realizando (haciendo uso de ng-show y ng-hide de Angular).
-
-A continuación se hace uso del tag ```<alert>``` mediante el cual se despliegan mensajes de información relevante para el usuario, como la recepción exitosa del formulario que deseaba enviar.
-
-Posteriormente viene un tag ```<div ng-hide="ctrl.editMode">``` el cual muestra los libros como tal, junto con toda su información, seguido de un tag ```<div ng-show="ctrl.editMode" class="well">``` el cual es el formulario usado para la creación o edición de libros.
+[http://localhost:9000](http://localhost:9000)
