@@ -84,54 +84,36 @@ Posteriormente agregue el siguiente pedazo de codigo al ```<head>``` el cual se 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
 
-Proceda a cargar Bootstrap, el main.css y los CSS adicionales que deba cargar bower en ejecución, mediante el siguiente codigo:
+Proceda a cargar los archivos CSS del proyecto, estos archivos serán cargados por Bower por lo cual unicamente hay que dejar una etiqueta para que Bower los agregue automaticamente al hacer build, de la siguiente manera:
 
 ```HTML
 <!-- build:css(<%= meta.src %>) styles/vendor.css -->
 <!-- bower:css -->
-<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:css(<%= meta.src %>) styles/main.css -->
 <!-- include: "type": "css", "files": "<%= meta.includeCssFiles %>" -->
-
-
-
-
 <!-- /include -->
 <!-- endbuild -->
 ```
 
-Finalmente, agregue los archivos javascript por medio del siguiente codigo:
+Finalmente, agregue los archivos javascript del mismo modo:
 
 ```HTML
 <!-- build:js(<%= meta.src %>) scripts/vendor.js -->
 <!-- bower:js -->
-<script src="../bower_components/jquery/dist/jquery.js"></script>
-<script src="../bower_components/angular/angular.js"></script>
-<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="../bower_components/ngstorage/ngStorage.js"></script>
-<script src="../bower_components/checklist-model/checklist-model.js"></script>
-<script src="../bower_components/angular-route/angular-route.js"></script>
-<script src="../bower_components/angular-cookies/angular-cookies.js"></script>
-<script src="../bower_components/csw-ng-auth/dist/csw-ng-auth.js"></script>
-<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js(<%= meta.src %>) scripts/scripts.js -->
 <!-- include: "type": "js", "files": "<%= meta.includeJsFiles %>" -->
 <script src="src/app.js"></script>
-<script src="src/modules/book/book.mod.js"></script>
-<script src="src/modules/book/book.ctrl.js"></script>
-<script src="src/modules/book/book.svc.js"></script>
 <!-- /include -->
 <!-- endbuild -->
 ```
 
-Con lo que se hará la carga de Angular, los scripts Bootstrap (incluyendo jQuery) y los componentes adicionales de Bower, también se hará la carga de los archivos propios del proyecto que definen el modulo *book*.
+Con lo anterior Bower hará la carga de Angular, los scripts Bootstrap (incluyendo jQuery) y los componentes adicionales de Bower, también se hará la carga de los archivos propios del proyecto, por ahora unicamente será el archivo ```src/app.js```
 
 Para terminar debe cambiar el tag ```<body>``` al siguiente:
 
