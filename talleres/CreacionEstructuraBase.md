@@ -6,7 +6,7 @@
 -  [Modificando package.json](#modificando-packagejson)
 -  [Ajustando el index.html](#ajustando-el-indexhtml)
 -  [Crear app.js](#crear-appjs)
--  [Creando el primer modulo](#crear-el-primer-modulo)
+-  [Crear el primer template](#crear-el-primer-template)
 
 ## Crear proyecto
 Con NetBeans ya adecuadamente configurado proceda a crear un nuevo proyecto, para ello seleccione el tipo **HTML5/JS Application**.
@@ -180,34 +180,8 @@ Para empezar cree una carpeta en el folder *Site Root* y asignele el nombre *src
 
 En este archivo se registran los modulos iniciales *authModule, bookModule y ui.router*. A continuación, usando el $stateProvider de Angular, se da reconocimiento al path /book para que cargue el modulo de libro que se va a definir, aquí mismo se ajusta el controlador y el template que usara dicho modulo para su funcionamiento. Finalmente, se define en el authServiceProvider, los ajustes de autenticación de usuario, incluyendo las urls de login, registro, logout, redirecciones y demás, posteriormente se registran los roles con los que se define el uso del menu del aplicativo según las condiciones del usuario que lo este utilizando, esta parte se da con la linea: ```auth.setRoles({'user': [{id: 'indexBook', label: 'book', icon: 'list-alt', url: '#/book'}]}) ;```
 
-## Crear el primer modulo
-Luego de ello hay que creer un directorio adicional dentro de *src* llamado *modules*, este directorio se llamará *book* y sobre el se crearan los siguientes archivos:
-
-* book.ctrl.js
-* book.mod.js
-* book.svc.js
-* book.tpl.html
-
-Con estos archivos se definira el modulo de libros, el contenido de cada archivo puede verificarse en el siguiente enlace:
-
-### book.ctrl.js
-Define el controlador del modulo, el cual se registra como "bookCtrl" y hace llamados a "bookService" para completar sus funciones. Principalmente se compone de los mismos metodos que tiene el servicio (puesto que debe llamarlos según sea el caso) con la adición de metodos que permiten mostrar mensajes de alerta e información acerca de las operaciones que debe realizar el controlador.
-
-### book.mod.js
-El modulo se define aquí, especificando su nombre: "bookModule", los modulos que requiere: "bootstrap" y la definición de la constante "bookContext" que esta definida como una URL.
-
-### book.svc.js
-En este archivo se define el servicio "bookService" en el cual se crean los siguientes metodos:
-
-Nombre          | Función                                                                       | Tipo de petición
---------------- | ----------------------------------------------------------------------------- | -------------------
-fetchRecords    | Retorna todos los libros                                                      | GET
-fetchRecord     | Retorna el libro que se pasa como parametro                                   | GET
-saveRecord      | Cuando el parametro "saveRecord" esta definido entonces se procede a actualizar la información con un PUT, de lo contrario se crea un nuevo book haciendo una petición POST                                      | PUT/POST
-deleteRecord    | Hace una petición DELETE para borrar el libro que se pasa como parametro      | DELETE
-
-### book.tpl.html
-Los archivos .tpl.html son los templates que maquetan la página que se despliega en el navegador que visualiza el aplicativo, los que se han dado de guia funcionan bajo las directrices de AngularJS y Bootstrap, por lo que la documentación de ambas plataformas resulta ser de gran utilidad para entender con claridad las lineas de los mismos
+## Crear el primer template
+Luego de ello hay que crear un directorio adicional dentro de *src* llamado *modules* en donde se almacenaran los modulo, como paso inicial también debe crearse el directorio *book* y sobre el se creara el template inicial, el cual deberá crearse como un archivo HTML llamado ```book.tpl.html```, estos archivos .tpl.html son los templates que maquetan la página que se despliega en el navegador que visualiza el aplicativo, los que se han dado de guia funcionan bajo las directrices de AngularJS y Bootstrap, por lo que la documentación de ambas plataformas resulta ser de gran utilidad para entender con claridad las lineas de los mismos
 
 En el caso de book.tpl.html se empieza con el siguiente div: ```<div id="book-header">``` el cual muestra el menu del apartado de libros, por lo tanto allí se muestran los botones que permiten crear un libro, refrescar los libros mostrados, guardar los cambios realizados y cancelar la operación actual, estos botones son mostrados u ocultados según la operación que se este realizando (haciendo uso de ng-show y ng-hide de Angular).
 
