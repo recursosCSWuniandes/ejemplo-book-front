@@ -29,5 +29,6 @@ Nombre          | Función                                                      
 --------------- | ----------------------------------------------------------------------------- | -------------------
 fetchRecords    | Retorna todos los libros                                                      | GET
 fetchRecord     | Retorna el libro que se pasa como parametro                                   | GET
-saveRecord      | Cuando el parametro "saveRecord" esta definido entonces se procede a actualizar la información con un PUT, de lo contrario se crea un nuevo book haciendo una petición POST                                      | PUT/POST
+saveRecord      | Al tener el parametro "saveRecord" definido es porque se esta actualizando la información de un libro existente, por lo tanto se hace una consulta de actualización del registro                                     | PUT
+saveRecord      | En caso de no tener definido el parametro "saveRecord" se procede a crear un nuevo book haciendo una petición de creación de registro                                                                            | POST
 deleteRecord    | Hace una petición DELETE para borrar el libro que se pasa como parametro      | DELETE
