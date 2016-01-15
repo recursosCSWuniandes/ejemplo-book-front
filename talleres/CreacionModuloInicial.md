@@ -5,6 +5,8 @@
 -  [book.mod.js](#bookmodjs)
 -  [book.svc.js](#booksvcjs)
 -  [book.tpl.html](#booktplhtml)
+-  [Cambiando app.js](#cambiando-appjs)
+-  [Cambiando index.html](#cambiando-indexhtml)
 
 ## Modulo Inicial
 Para la creación de un modulo se deben definir una serie de archivos que cumplen unas funciones basicas:
@@ -31,7 +33,7 @@ Nombre          | Función                                                      
 --------------- | ----------------------------------------------------------------------------- | -------------------
 fetchRecords    | Retorna todos los libros                                                      | GET
 fetchRecord     | Retorna el libro que se pasa como parametro                                   | GET
-saveRecord      | Al tener el parametro "saveRecord" definido es porque se esta actualizando la información de un libro existente, por lo tanto se hace una consulta de actualización del registro                                     | PUT
+saveRecord      | Al tener el parametro "saveRecord" definido es porque se esta actualizando la información de un libro existente, por lo tanto se hace una consulta de actualización del registro                                        | PUT
 saveRecord      | En caso de no tener definido el parametro "saveRecord" se procede a crear un nuevo book haciendo una petición de creación de registro                                                                            | POST
 deleteRecord    | Hace una petición DELETE para borrar el libro que se pasa como parametro      | DELETE
 
@@ -44,7 +46,11 @@ A continuación se hace uso del tag ```<alert>``` mediante el cual se despliegan
 
 Posteriormente viene un tag ```<div ng-hide="ctrl.editMode">``` el cual muestra los libros como tal, junto con toda su información, seguido de un tag ```<div ng-show="ctrl.editMode" class="well">``` el cual es el formulario usado para la creación o edición de libros.
 
-## Cambiando el app.js
+Aquí pueden verse los cambios del archivo:
+
+https://github.com/recursosCSWuniandes/ejemplo-book-front/commits/2.0.0/app/src/modules/book/book.tpl.html
+
+## Cambiando app.js
 Ahora se hará la carga del modulo authProvider, el cual se define en app.js con authServiceProvider, los ajustes de autenticación de usuario, incluyendo las urls de login, registro, logout, redirecciones y demás, posteriormente se registran los roles con los que se define el uso del menu del aplicativo según las condiciones del usuario que lo este utilizando, esta parte se da con la linea: ```auth.setRoles({'user': [{id: 'indexBook', label: 'book', icon: 'list-alt', url: '#/book'}]}) ;```
 
 También debe incluirse la carga del modulo bookModule (definido anteriormente), para ello se modifica la variable mainApp para incluir "bookModule" en su colección, también se agregan dos lineas al state("/book") las cuales marcan la creación del modulo:
@@ -53,3 +59,20 @@ También debe incluirse la carga del modulo bookModule (definido anteriormente),
 controller: "bookCtrl",
 controllerAs: "ctrl"
 ```
+
+Aquí pueden verse los cambios del archivo:
+
+https://github.com/recursosCSWuniandes/ejemplo-book-front/commits/2.0.0/app/src/app.js
+
+## Cambiando index.html
+Es necesario cargar los archivos javascript creados inicialmente, por ello se deben incluir (en la carga de nuestro JS) las siguientes lineas:
+
+```
+<script src="src/modules/book/book.mod.js"></script>
+<script src="src/modules/book/book.ctrl.js"></script>
+<script src="src/modules/book/book.svc.js"></script>
+```
+
+Aquí pueden verse los cambios del archivo:
+
+https://github.com/recursosCSWuniandes/ejemplo-book-front/commits/2.0.0/app/index.html
