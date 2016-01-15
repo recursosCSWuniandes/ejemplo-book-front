@@ -7,6 +7,7 @@
 -  [Ajustando el index.html](#ajustando-el-indexhtml)
 -  [Crear app.js](#crear-appjs)
 -  [Crear el primer template](#crear-el-primer-template)
+-  [Ejecucion](#ejecucion)
 
 ## Crear proyecto
 Con NetBeans ya adecuadamente configurado proceda a crear un nuevo proyecto, para ello seleccione el tipo **HTML5/JS Application**.
@@ -168,3 +169,14 @@ Luego de ello hay que crear un directorio adicional dentro de *src* llamado *mod
 El archivo inicial cuenta con contenido estatico, es decir que unicamente se encarga de mostrar información predeterminada cuando se hace la carga del mismo (con 3 libros), sin embargo este archivo se modificará con la intención de hacer el despliegue de los datos que se carguen del backend.
 
 Tenga en cuenta la documentación de bootstrap para comprender el contenido del archivo, en especifico se hace uso de una serie de ```<div>``` anidados en donde ```col-(md/sm)-#``` representan una columna (# va de 1 a 12) y estas columnas tienen la información de los 3 libros mencionados.
+
+## Ejecución
+Para ver el proyecto desplegado (con la información de los libros estaticos), proceda a dar clic derecho sobre el proyecto y seleccione las siguientes opciones:
+
+```npm install```
+```bower install```
+```Grunt Tasks -> Advanced... -> grunt run```
+
+Posteriormente se deberá ver la aplicación funcionando sobre la siguiente url:
+
+```http://localhost:9000```
