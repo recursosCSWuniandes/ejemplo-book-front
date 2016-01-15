@@ -46,3 +46,10 @@ Posteriormente viene un tag ```<div ng-hide="ctrl.editMode">``` el cual muestra 
 
 ## Cambiando el app.js
 Ahora se hará la carga del modulo authProvider, el cual se define en app.js con authServiceProvider, los ajustes de autenticación de usuario, incluyendo las urls de login, registro, logout, redirecciones y demás, posteriormente se registran los roles con los que se define el uso del menu del aplicativo según las condiciones del usuario que lo este utilizando, esta parte se da con la linea: ```auth.setRoles({'user': [{id: 'indexBook', label: 'book', icon: 'list-alt', url: '#/book'}]}) ;```
+
+También debe incluirse la carga del modulo bookModule (definido anteriormente), para ello se modifica la variable mainApp para incluir "bookModule" en su colección, también se agregan dos lineas al state("/book") las cuales marcan la creación del modulo:
+
+```
+controller: "bookCtrl",
+controllerAs: "ctrl"
+```
