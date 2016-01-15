@@ -183,4 +183,4 @@ Para ver el proyecto desplegado (con la información de los libros estaticos), p
 
 Posteriormente se deberá ver la aplicación funcionando sobre la siguiente url:
 
-```http://localhost:9000```
+[http://localhost:9000](http://localhost:9000)
