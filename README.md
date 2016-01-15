@@ -6,4 +6,4 @@ Ejemplo paso a paso de la creación de un proyecto AngularJS
 -  [Creación estructura base](https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/talleres/CreacionEstructuraBase.md)
 -  [Creación modulo inicial](https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/talleres/CreacionModuloInicial.md)
 -  [Creación modulos adicionales](https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/talleres/CreacionModulosAdicionales.md)
--  [Pruebas en Protractor](https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/talleres/PruebasIntegracion.md)
+-  [Pruebas de Integración](https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/talleres/PruebasIntegracion.md)
