@@ -11,13 +11,13 @@
 ## Crear proyecto
 Con NetBeans ya adecuadamente configurado proceda a crear un nuevo proyecto, para ello seleccione el tipo **HTML5/JS Application**.
 
-En las opciones posteriores seleccione la ruta en donde guardara el proyecto, no seleccione ningun template y en las herramientas deje todas marcadas a excepción de gulpfile.js
+En las opciones posteriores seleccione la ruta en donde guardara el proyecto, no seleccione ningun template y en las herramientas deje todas marcadas a excepción de gulpfile.js. Una vez creado el proyecto de clic derecho sobre el mismo y cree un nuevo folder llamado **app**, luego de clic derecho sobre el proyecto y seleccione la opción properties, ahora en **Sources** ubique la selección de la carpeta **Source Folder** y seleccione la carpeta que acabo de crear.
 
 ## Modificando Gruntfile
 
 Abra el archivo *Important Files/Gruntfile* y asigne el contenido que se encuentra a continuación:
 
-!!ENLACE DEL ARCHIVO
+https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/Gruntfile.js
 
 Este archivo es utilizado por Grunt para realizar las tareas que en el ejecutamos (como build, run o test), por lo tanto su contenido puede resultar un poco complejo, se aconseja visitar la [documentación oficial](http://gruntjs.com/sample-gruntfile) para entender los conceptos basicos.
 
@@ -42,7 +42,7 @@ Como puede apreciar es posible dentro de una tarea registrada hacer un llamada a
 
 Abra el archivo *Important Files/bower.json* y asigne el contenido del ejemplo:
 
-!!ENLACE DEL ARCHIVO
+https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/bower.json
 
 Bower es un gestor de paquetes que permite la carga de depencias dentro de proyectos web. En el archivo enlazado podrá preciar que se asignan los siguientes parametros:
 
@@ -55,7 +55,7 @@ Bower es un gestor de paquetes que permite la carga de depencias dentro de proye
 ## Modificando package.json
 Abra el archivo *Important Files/package.json* y asigne el contenido del ejemplo:
 
-!!ENLACE DEL ARCHIVO
+https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/master/package.json
 
 En este archivo las primeras 4 lineas son de configuración: name, version, description y main (archivo principal de carga).
 
@@ -153,20 +153,18 @@ Para terminar debe cambiar el tag ```<body>``` al siguiente:
     </body>
 ```
 
-Este tag se encarga de definir la estructura HTML basica de Bootstrap, en donde se incluye el encabezado ```<navbar>``` que actua de modo responsive y que incluye el menu del aplicativo así como las opciones de loggeo que se manejan con el tag ```<login-button>```.    
+Este tag se encarga de definir la estructura HTML basica de Bootstrap, en donde se incluye el encabezado ```<navbar>``` que actua de modo responsive y que incluye el menu del aplicativo así como las opciones de loggeo que se manejan con el tag ```<login-button>```.  
 
 ## Crear App.js
-Para empezar cree una carpeta en el folder *Site Root* y asignele el nombre *src*, posteriormente agregue allí un archivo *app.js* con el siguiente contenido:
+Para empezar cree una carpeta en el folder *app* y asignele el nombre *src*, posteriormente agregue allí un archivo *app.js* con el siguiente contenido:
 
 !!! CONTENIDO DEL ARCHIVO
 
-En este archivo se registran los modulos iniciales *authModule, bookModule y ui.router*. A continuación, usando el $stateProvider de Angular, se da reconocimiento al path /book para que cargue el modulo de libro que se va a definir, aquí mismo se ajusta el controlador y el template que usara dicho modulo para su funcionamiento. Finalmente, se define en el authServiceProvider, los ajustes de autenticación de usuario, incluyendo las urls de login, registro, logout, redirecciones y demás, posteriormente se registran los roles con los que se define el uso del menu del aplicativo según las condiciones del usuario que lo este utilizando, esta parte se da con la linea: ```auth.setRoles({'user': [{id: 'indexBook', label: 'book', icon: 'list-alt', url: '#/book'}]}) ;```
+En este archivo se registran los modulos iniciales *authModule y ui.router*. A continuación, usando el $stateProvider de Angular, se da reconocimiento al path /book para que cargue el modulo de libro que se va a definir. Finalmente, se define en el authServiceProvider, los ajustes de autenticación de usuario, incluyendo las urls de login, registro, logout, redirecciones y demás, posteriormente se registran los roles con los que se define el uso del menu del aplicativo según las condiciones del usuario que lo este utilizando, esta parte se da con la linea: ```auth.setRoles({'user': [{id: 'indexBook', label: 'book', icon: 'list-alt', url: '#/book'}]}) ;```
 
 ## Crear el primer template
-Luego de ello hay que crear un directorio adicional dentro de *src* llamado *modules* en donde se almacenaran los modulo, como paso inicial también debe crearse el directorio *book* y sobre el se creara el template inicial, el cual deberá crearse como un archivo HTML llamado ```book.tpl.html```, estos archivos .tpl.html son los templates que maquetan la página que se despliega en el navegador que visualiza el aplicativo, los que se han dado de guia funcionan bajo las directrices de AngularJS y Bootstrap, por lo que la documentación de ambas plataformas resulta ser de gran utilidad para entender con claridad las lineas de los mismos
+Luego de ello hay que crear un directorio adicional dentro de *src* llamado *modules* en donde se almacenaran los modulos, como paso inicial también debe crearse el directorio *book* y sobre el se creara el template inicial, el cual deberá crearse como un archivo HTML llamado ```book.tpl.html```, estos archivos .tpl.html son los templates que maquetan la página que se despliega en el navegador que visualiza el aplicativo, los que se han dado de guia funcionan con los framework de AngularJS y Bootstrap, por lo que la documentación de ambas plataformas resulta ser de gran utilidad para entender con claridad las lineas de los mismos
 
-En el caso de book.tpl.html se empieza con el siguiente div: ```<div id="book-header">``` el cual muestra el menu del apartado de libros, por lo tanto allí se muestran los botones que permiten crear un libro, refrescar los libros mostrados, guardar los cambios realizados y cancelar la operación actual, estos botones son mostrados u ocultados según la operación que se este realizando (haciendo uso de ng-show y ng-hide de Angular).
+El archivo inicial cuenta con contenido estatico, es decir que unicamente se encarga de mostrar información predeterminada cuando se hace la carga del mismo (con 3 libros), sin embargo este archivo se modificará con la intención de hacer el despliegue de los datos que se carguen del backend.
 
-A continuación se hace uso del tag ```<alert>``` mediante el cual se despliegan mensajes de información relevante para el usuario, como la recepción exitosa del formulario que deseaba enviar.
-
-Posteriormente viene un tag ```<div ng-hide="ctrl.editMode">``` el cual muestra los libros como tal, junto con toda su información, seguido de un tag ```<div ng-show="ctrl.editMode" class="well">``` el cual es el formulario usado para la creación o edición de libros.
+Tenga en cuenta la documentación de bootstrap para comprender el contenido del archivo, en especifico se hace uso de una serie de ```<div>``` anidados en donde ```col-(md/sm)-#``` representan una columna (# va de 1 a 12) y estas columnas tienen la información de los 3 libros mencionados.
