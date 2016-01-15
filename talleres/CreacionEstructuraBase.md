@@ -156,7 +156,7 @@ Para terminar debe cambiar el tag ```<body>``` al siguiente:
     </body>
 ```
 
-Este tag se encarga de definir la estructura HTML basica de Bootstrap, en donde se incluye el encabezado ```<navbar>``` que actua de modo responsive y que incluye el menu del aplicativo así como las opciones de loggeo que se manejan con el tag ```<login-button>```.  
+Esta porción de codigo se encarga de definir la estructura HTML basica de Bootstrap. Se incluye incluye el encabezado, maqueteado con ```<navbar>```, que actua de modo responsive. También esta presente el menu del aplicativo (```<ul class="nav navbar-nav">```), así como las opciones de loggeo que se manejan con el tag ```<login-button>```.  
 
 ## Crear App.js
 Para empezar cree una carpeta en el folder *app* y asignele el nombre *src*, posteriormente agregue allí un archivo *app.js* con el siguiente contenido:
@@ -166,7 +166,7 @@ Para empezar cree una carpeta en el folder *app* y asignele el nombre *src*, pos
 En este archivo se registran los modulos iniciales, para este caso unicamente será *ui.router*. A continuación, usando el $stateProvider de Angular, se da reconocimiento a los path iniciales: /book, /editorial y /author para que carguen los modulos que se van a definir.
 
 ## Crear el primer template
-Luego de ello hay que crear un directorio adicional dentro de *src* llamado *modules* en donde se almacenaran los modulos, como paso inicial también debe crearse los directorios *book*, *editorial* y *author*. En cada directorio se crean los archivos ```book.tpl.html, editorial.tpl.html y author.tpl.html```, estos archivos .tpl.html son los templates que maquetan la página que se despliega en el navegador que visualiza el aplicativo, los que se han dado de guia funcionan con los framework de AngularJS y Bootstrap, por lo que la documentación de ambas plataformas resulta ser de gran utilidad para entender con claridad las lineas de los mismos
+Luego de ello hay que crear un directorio adicional dentro de *src* llamado *modules* en donde se almacenaran los modulos, adentro de dicho folder también deben crearse los directorios *book*, *editorial* y *author*. En cada directorio se crean los archivos ```book.tpl.html, editorial.tpl.html y author.tpl.html``` respectivamente. Estos archivos .tpl.html son los templates que estructuran la página que se despliega en el navegador, los que se han dado de guia funcionan con los framework de AngularJS y Bootstrap, por lo que la documentación de ambas plataformas resulta ser de gran utilidad para entender con claridad las lineas de los mismos
 
 El archivo inicial cuenta con contenido estatico, es decir que unicamente se encarga de mostrar información predeterminada cuando se hace la carga del mismo (con 3 libros, autores y editoriales), sin embargo este archivo se modificará con la intención de hacer el despliegue de los datos que se carguen del backend.
 
