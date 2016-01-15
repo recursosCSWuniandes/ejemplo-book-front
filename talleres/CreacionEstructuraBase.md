@@ -18,7 +18,7 @@ En las opciones posteriores seleccione la ruta en donde guardara el proyecto, no
 
 Abra el archivo *Important Files/Gruntfile* y asigne el contenido que se encuentra a continuación:
 
-https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/m/Gruntfile.js
+https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/f94db9477718eb2b52c589f750613a592d30c7de/Gruntfile.js
 
 Este archivo es utilizado por Grunt para realizar las tareas que en el ejecutamos (como build, run o test), por lo tanto su contenido puede resultar un poco complejo, se aconseja visitar la [documentación oficial](http://gruntjs.com/sample-gruntfile) para entender los conceptos basicos.
 
@@ -74,7 +74,11 @@ Para la aplicación que esta creando se usaran dos frameworks web:
 
 **AngularJS** es un framework que facilita muchas de las tareas dinamicas que se desarrollan con Javascript, mientras que **Bootstrap** es un framework que permite la creación rapida de sitios web responsive mediante el uso de unos HTML/CSS/JS predeterminados.
 
-Para implementar **AngularJS** y **Bootstrap** en el proyecto creado abra el index.html que se encuentra adentro de la carpeta *Site Root*, en primer lugar modifique la etiqueta ```<html>``` y dejela como ```<html ng-app="mainApp">``` para cargar Angular sobre el template.
+Como guia para la modificación del *index.html* usaremos el siguiente archivo:
+
+https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/f94db9477718eb2b52c589f750613a592d30c7de/app/index.html
+
+Para implementar **AngularJS** y **Bootstrap** en el proyecto creado mueva el index.html para que quede adentro de la carpeta *app*, abralo y modifique la etiqueta ```<html>``` y dejela como ```<html ng-app="mainApp">``` para cargar Angular sobre el template.
 
 Posteriormente agregue el siguiente pedazo de codigo al ```<head>``` el cual se encarga de asignarle un titulo a la aplicación, ajustar el tamaño para que sea responsive, arreglar la compatibilidad con Internet Explorer y definir UTF-8 como charset:
 
@@ -161,12 +165,14 @@ Esta porción de codigo se encarga de definir la estructura HTML basica de Boots
 ## Crear App.js
 Para empezar cree una carpeta en el folder *app* y asignele el nombre *src*, posteriormente agregue allí un archivo *app.js* con el siguiente contenido:
 
-!!! CONTENIDO DEL ARCHIVO
+https://github.com/recursosCSWuniandes/ejemplo-book-front/blob/f94db9477718eb2b52c589f750613a592d30c7de/app/src/app.js
 
 En este archivo se registran los modulos iniciales, para este caso unicamente será *ui.router*. A continuación, usando el $stateProvider de Angular, se da reconocimiento a los path iniciales: /book, /editorial y /author para que carguen los modulos que se van a definir.
 
 ## Crear el primer template
-Luego de ello hay que crear un directorio adicional dentro de *src* llamado *modules* en donde se almacenaran los modulos, adentro de dicho folder también deben crearse los directorios *book*, *editorial* y *author*. En cada directorio se crean los archivos ```book.tpl.html, editorial.tpl.html y author.tpl.html``` respectivamente. Estos archivos .tpl.html son los templates que estructuran la página que se despliega en el navegador, los que se han dado de guia funcionan con los framework de AngularJS y Bootstrap, por lo que la documentación de ambas plataformas resulta ser de gran utilidad para entender con claridad las lineas de los mismos
+Luego de ello hay que crear un directorio adicional dentro de *src* llamado *modules* en donde se almacenaran los modulos, adentro de dicho folder también deben crearse los directorios *book*, *editorial* y *author*. En cada directorio se crean los archivos ```book.tpl.html, editorial.tpl.html y author.tpl.html``` respectivamente. Estos archivos .tpl.html son los templates que estructuran la página que se despliega en el navegador, los que se han dado de guia funcionan con los framework de AngularJS y Bootstrap, por lo que la documentación de ambas plataformas resulta ser de gran utilidad para entender con claridad las lineas de los mismos. Los archivos guia se encuentran a continuación:
+
+https://github.com/recursosCSWuniandes/ejemplo-book-front/tree/f94db9477718eb2b52c589f750613a592d30c7de/app/src/modules
 
 El archivo inicial cuenta con contenido estatico, es decir que unicamente se encarga de mostrar información predeterminada cuando se hace la carga del mismo (con 3 libros, autores y editoriales), sin embargo este archivo se modificará con la intención de hacer el despliegue de los datos que se carguen del backend.
 
