@@ -43,3 +43,6 @@ En el caso de book.tpl.html se empieza con el siguiente div: ```<div id="book-he
 A continuación se hace uso del tag ```<alert>``` mediante el cual se despliegan mensajes de información relevante para el usuario, como la recepción exitosa del formulario que deseaba enviar.
 
 Posteriormente viene un tag ```<div ng-hide="ctrl.editMode">``` el cual muestra los libros como tal, junto con toda su información, seguido de un tag ```<div ng-show="ctrl.editMode" class="well">``` el cual es el formulario usado para la creación o edición de libros.
+
+## Cambiando el app.js
+Ahora se hará la carga del modulo authProvider, el cual se define en app.js con authServiceProvider, los ajustes de autenticación de usuario, incluyendo las urls de login, registro, logout, redirecciones y demás, posteriormente se registran los roles con los que se define el uso del menu del aplicativo según las condiciones del usuario que lo este utilizando, esta parte se da con la linea: ```auth.setRoles({'user': [{id: 'indexBook', label: 'book', icon: 'list-alt', url: '#/book'}]}) ;```
